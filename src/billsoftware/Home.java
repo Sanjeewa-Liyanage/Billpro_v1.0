@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -675,6 +674,11 @@ public class Home extends javax.swing.JFrame {
         exitsys.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 24)); // NOI18N
         exitsys.setForeground(new java.awt.Color(0, 0, 0));
         exitsys.setText("Exit");
+        exitsys.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitsysMouseClicked(evt);
+            }
+        });
         exitsys.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitsysActionPerformed(evt);
@@ -830,6 +834,8 @@ public class Home extends javax.swing.JFrame {
 
     private void cal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cal1ActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_cal1ActionPerformed
 
     private void btnsearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsearchMouseClicked
@@ -881,6 +887,20 @@ public class Home extends javax.swing.JFrame {
            tblModel.removeRow(selectedRow);
            
     }//GEN-LAST:event_btnremove1MouseClicked
+
+    private void exitsysMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitsysMouseClicked
+        // TODO add your handling code here:
+        try{
+        Databaseconfig config = new Databaseconfig();
+        Login info = new Login(config);
+        info.setVisible(true);
+        this.dispose();
+        
+        }catch(IOException ex){
+            System.out.println(ex);
+        
+        }
+    }//GEN-LAST:event_exitsysMouseClicked
     
     /**
      * @param args the command line arguments
