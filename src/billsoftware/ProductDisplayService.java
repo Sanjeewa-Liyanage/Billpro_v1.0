@@ -89,7 +89,7 @@ public class ProductDisplayService {
            tblModel.setRowCount(0);
     
     }
-    public static void main()throws IOException{
+    public static void main()throws IOException, Exception{
     Databaseconfig config = new Databaseconfig();
     ProductDisplayService productdisplayservice =new ProductDisplayService(config);
     
