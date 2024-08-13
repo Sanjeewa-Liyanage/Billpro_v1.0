@@ -636,6 +636,11 @@ public class Home extends javax.swing.JFrame {
         newbill.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 24)); // NOI18N
         newbill.setForeground(new java.awt.Color(0, 0, 0));
         newbill.setText("New");
+        newbill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newbillMouseClicked(evt);
+            }
+        });
         newbill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newbillActionPerformed(evt);
@@ -867,7 +872,10 @@ public class Home extends javax.swing.JFrame {
         }catch(Exception e){
         System.out.println(e);
         
-        };
+        }finally{
+        search.setText("");
+        
+        }
     }//GEN-LAST:event_btnsearchMouseClicked
 
     private void btnclearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnclearMouseClicked
@@ -899,8 +907,29 @@ public class Home extends javax.swing.JFrame {
         }catch(IOException ex){
             System.out.println(ex);
         
+        } catch (Exception ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_exitsysMouseClicked
+
+    private void newbillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newbillMouseClicked
+        // TODO add your handling code here:
+        cname.setText("");
+        cphone.setText("");
+        pname.setText("");
+        pmanu.setText("");
+        pseriel.setText("");
+        pmodelno.setText("");
+        pprice.setText("");
+        pqty.setText("");
+        search.setText("");
+        subtotal.setText("");
+        discount.setText("");
+        total.setText("");
+        DefaultTableModel tblModel = (DefaultTableModel)table3.getModel();
+        tblModel.setRowCount(0);
+        
+    }//GEN-LAST:event_newbillMouseClicked
     
     /**
      * @param args the command line arguments
@@ -939,7 +968,9 @@ public class Home extends javax.swing.JFrame {
                 
                }catch(IOException ex){
                System.out.println(ex);
-               }
+               } catch (Exception ex) {
+                    System.out.println(ex);
+                }
             }
         });
     }

@@ -49,6 +49,7 @@ public class UpdateProducts extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table2 = new javax.swing.JTable();
@@ -71,6 +72,14 @@ public class UpdateProducts extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-back-52.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 50));
 
         jPanel1.setBackground(new java.awt.Color(176, 211, 209));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -181,7 +190,7 @@ public class UpdateProducts extends javax.swing.JFrame {
         jLabel17.setText("Product Id");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 170, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 600));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -267,6 +276,13 @@ public class UpdateProducts extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteMouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+                // TODO add your handling code here:
+            AdminHome info = new AdminHome();
+            info.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -304,6 +320,8 @@ public class UpdateProducts extends javax.swing.JFrame {
                 }catch(IOException ex){
                 System.out.println(ex);
                 
+                } catch (Exception ex) {
+                    Logger.getLogger(UpdateProducts.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -312,6 +330,7 @@ public class UpdateProducts extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton delete;
     private javax.swing.JLabel id;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

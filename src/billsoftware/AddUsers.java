@@ -107,6 +107,7 @@ public class AddUsers extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         role = new javax.swing.JComboBox<>();
         adduser = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(900, 550));
@@ -189,6 +190,14 @@ public class AddUsers extends javax.swing.JFrame {
         });
         jPanel1.add(adduser, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, 150, 40));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-back-52.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 50));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 550));
 
         pack();
@@ -235,6 +244,13 @@ public class AddUsers extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_adduserActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+            AdminHome info = new AdminHome();
+            info.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -273,6 +289,8 @@ public class AddUsers extends javax.swing.JFrame {
                     new AddUsers(config).setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(AddUsers.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(AddUsers.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -280,6 +298,7 @@ public class AddUsers extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adduser;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel7;

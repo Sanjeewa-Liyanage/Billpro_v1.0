@@ -52,7 +52,7 @@ public class UserDisplayService {
     
     }
     
-    public static void main() throws IOException{
+    public static void main() throws IOException, Exception{
     Databaseconfig config = new Databaseconfig();
     UserDisplayService userdisplayservoce = new UserDisplayService(config);
     

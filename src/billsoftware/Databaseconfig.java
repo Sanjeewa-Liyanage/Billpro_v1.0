@@ -1,21 +1,20 @@
 package billsoftware;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Properties;
 
 public class Databaseconfig {
     private Properties properties;
 
-    public Databaseconfig() throws IOException {
+    public Databaseconfig() throws Exception{
         properties = new Properties();
         loadProperties();
     }
 
-    private void loadProperties() throws IOException {
+    private void loadProperties() throws Exception{
         try (FileInputStream stream = new FileInputStream("config/db.properties")) {
-            properties.load(stream);
-        } catch (IOException e) {
+        properties.load(stream);
+        } catch (Exception e){
             throw e;
         }
     }
@@ -23,7 +22,6 @@ public class Databaseconfig {
     public String getUrl() {
         System.out.println(properties.getProperty("url"));
         return properties.getProperty("url");
-       
     }
 
     public String getUsername() {

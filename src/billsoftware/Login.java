@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.sql.DriverManager;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,6 +47,7 @@ public class Login extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         login = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        credential = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -102,7 +105,22 @@ public class Login extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 540, 10));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 530, 550));
+        credential.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        credential.setText("Add Credential");
+        credential.setActionCommand("");
+        credential.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                credentialMouseClicked(evt);
+            }
+        });
+        credential.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                credentialActionPerformed(evt);
+            }
+        });
+        jPanel1.add(credential, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 120, 50));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 550));
 
         jPanel2.setBackground(new java.awt.Color(198, 229, 241));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -145,6 +163,17 @@ public class Login extends javax.swing.JFrame {
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "User Login Success");
+                    try{
+        Databaseconfig config = new Databaseconfig();
+        Home info = new Home(config);
+        info.setVisible(true);
+        this.dispose();
+        
+        }catch(Exception  ex){
+        System.out.println(ex);
+        JOptionPane.showMessageDialog(this, "Failed to load configuration.", "Error", JOptionPane.ERROR_MESSAGE);
+        
+        }
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid username or password");
@@ -153,10 +182,36 @@ public class Login extends javax.swing.JFrame {
             stmt.close();
             con.close();
         } catch (ClassNotFoundException | SQLException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error connecting to database: " + ex.getMessage());
+           System.out.println(ex);
+            JOptionPane.showMessageDialog(null, "Error connecting to database");
         }
     }//GEN-LAST:event_loginMouseClicked
+
+    private void credentialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_credentialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_credentialActionPerformed
+
+    private void credentialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_credentialMouseClicked
+        // TODO add your handling code here:
+       int result = JOptionPane.showConfirmDialog(null, "Contatct our Support team before Changing the Administrative Credentials", "Conformation", JOptionPane.OK_CANCEL_OPTION);
+        if(result == JOptionPane.OK_OPTION){
+        
+        }
+        else{
+       try{
+        Databaseconfig config = new Databaseconfig();
+        Login info = new Login(config);
+        info.setVisible(true);
+        this.dispose();
+        
+        }catch(Exception  ex){
+        System.out.println(ex);
+        JOptionPane.showMessageDialog(this, "Failed to load configuration.", "Error", JOptionPane.ERROR_MESSAGE);
+        
+        }
+        }
+        
+    }//GEN-LAST:event_credentialMouseClicked
 
     /**
      * @param args the command line arguments
@@ -194,12 +249,15 @@ public class Login extends javax.swing.JFrame {
                 new Login(databaseconfig).setVisible(true);
                 }catch(IOException ex){
                 System.out.print(ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton credential;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

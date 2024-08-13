@@ -818,6 +818,7 @@
             <Property name="text" type="java.lang.String" value="New"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newbillMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newbillActionPerformed"/>
           </Events>
           <Constraints>

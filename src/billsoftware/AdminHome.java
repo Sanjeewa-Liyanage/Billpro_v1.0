@@ -1,6 +1,8 @@
 package billsoftware;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -33,15 +35,15 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        updateUser = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(900, 550));
@@ -61,21 +63,10 @@ public class AdminHome extends javax.swing.JFrame {
         jLabel5.setText("Welcome to  Admin Panel");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 460, 60));
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Sales");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, 150, 40));
-
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("User Control");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 150, 40));
-
-        jButton1.setBackground(new java.awt.Color(86, 179, 104));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Delete User");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 140, 40));
 
         jButton2.setBackground(new java.awt.Color(86, 179, 104));
         jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
@@ -86,42 +77,90 @@ public class AdminHome extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 140, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 200, 40));
 
-        jButton3.setBackground(new java.awt.Color(86, 179, 104));
-        jButton3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Update User");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 140, 40));
+        updateUser.setBackground(new java.awt.Color(86, 179, 104));
+        updateUser.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        updateUser.setForeground(new java.awt.Color(255, 255, 255));
+        updateUser.setText("Update or Delete User");
+        updateUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateUserMouseClicked(evt);
+            }
+        });
+        jPanel1.add(updateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 200, 40));
 
         jButton4.setBackground(new java.awt.Color(189, 103, 219));
         jButton4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Add stock");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 140, 40));
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 210, 40));
 
         jButton5.setBackground(new java.awt.Color(189, 103, 219));
         jButton5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Update Stock");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 140, 40));
-
-        jButton6.setBackground(new java.awt.Color(189, 103, 219));
-        jButton6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Delete stock");
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 140, 40));
+        jButton5.setText("Update or Delete Stock");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 210, 40));
 
         jButton7.setBackground(new java.awt.Color(87, 133, 175));
         jButton7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Sales");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 140, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-back-52.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 50));
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Sales");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, 150, 40));
+
+        jButton8.setBackground(new java.awt.Color(87, 133, 175));
+        jButton8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("Cashier Home");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 140, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 550));
 
@@ -140,12 +179,110 @@ public class AdminHome extends javax.swing.JFrame {
         info.setVisible(true);
         this.dispose();
         
-        }catch(IOException ex){
-            System.out.println(ex);
+        }catch(Exception  ex){
+        System.out.println(ex);
+        JOptionPane.showMessageDialog(this, "Failed to load configuration.", "Error", JOptionPane.ERROR_MESSAGE);
+        
+        } 
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        try{
+        Databaseconfig config = new Databaseconfig();
+        Sales info = new Sales(config);
+        info.setVisible(true);
+        this.dispose();
+        
+        }catch(Exception  ex){
+        System.out.println(ex);
         JOptionPane.showMessageDialog(this, "Failed to load configuration.", "Error", JOptionPane.ERROR_MESSAGE);
         
         }
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void updateUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateUserMouseClicked
+        // TODO add your handling code here:
+        try{
+        Databaseconfig config = new Databaseconfig();
+        UpdateUsers info = new UpdateUsers(config);
+        info.setVisible(true);
+        this.dispose();
+        
+        }catch(Exception  ex){
+        System.out.println(ex);
+        JOptionPane.showMessageDialog(this, "Failed to load configuration.", "Error", JOptionPane.ERROR_MESSAGE);
+        
+        }
+    }//GEN-LAST:event_updateUserMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        try{
+        Databaseconfig config = new Databaseconfig();
+        AddProducts info = new AddProducts(config);
+        info.setVisible(true);
+        this.dispose();
+        
+        }catch(Exception  ex){
+        System.out.println(ex);
+        JOptionPane.showMessageDialog(this, "Failed to load configuration.", "Error", JOptionPane.ERROR_MESSAGE);
+        
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        try{
+        Databaseconfig config = new Databaseconfig();
+        UpdateProducts info = new UpdateProducts(config);
+        info.setVisible(true);
+        this.dispose();
+        
+        }catch(Exception  ex){
+        System.out.println(ex);
+        JOptionPane.showMessageDialog(this, "Failed to load configuration.", "Error", JOptionPane.ERROR_MESSAGE);
+        
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        try{
+        Databaseconfig config = new Databaseconfig();
+        Login info = new Login(config);
+        info.setVisible(true);
+        this.dispose();
+        
+        }catch(Exception  ex){
+        System.out.println(ex);
+        JOptionPane.showMessageDialog(this, "Failed to load configuration.", "Error", JOptionPane.ERROR_MESSAGE);
+        
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+        try{
+        Databaseconfig config = new Databaseconfig();
+        Home info = new Home(config);
+        info.setVisible(true);
+        this.dispose();
+        
+        }catch(Exception  ex){
+        System.out.println(ex);
+        JOptionPane.showMessageDialog(this, "Failed to load configuration.", "Error", JOptionPane.ERROR_MESSAGE);
+        
+        }
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,17 +320,17 @@ public class AdminHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton updateUser;
     // End of variables declaration//GEN-END:variables
 }
