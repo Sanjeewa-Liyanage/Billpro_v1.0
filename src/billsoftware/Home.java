@@ -127,7 +127,7 @@ public class Home extends javax.swing.JFrame {
              String manufacturer = (String)tblmodel.getValueAt(row,7);
              String modelno = (String)tblmodel.getValueAt(row, 1);
              String seriel = (String)tblmodel.getValueAt(row, 2);
-             double unitprice = Double.parseDouble(tblmodel.getValueAt(row, 4).toString());
+             double unitprice = Double.parseDouble(tblmodel.getValueAt(row, 5).toString());
              int qty = Integer.parseInt(tblmodel.getValueAt(row, 3).toString());
              
              
@@ -157,7 +157,7 @@ public class Home extends javax.swing.JFrame {
     
     private void calculatetotal(){
     for(int i =0; i<table3.getRowCount(); i++){
-    double price = Double.parseDouble(table3.getValueAt(i, 4).toString());
+    double price = Double.parseDouble(table3.getValueAt(i, 5).toString());
     subtotalt+= price;
     
     }
@@ -260,7 +260,6 @@ public class Home extends javax.swing.JFrame {
         btnremove1 = new javax.swing.JButton();
         cal1 = new javax.swing.JButton();
         newbill = new javax.swing.JButton();
-        print = new javax.swing.JButton();
         save = new javax.swing.JButton();
         exitsys = new javax.swing.JButton();
 
@@ -648,17 +647,6 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel1.add(newbill, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 690, 140, 50));
 
-        print.setBackground(new java.awt.Color(246, 233, 178));
-        print.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 24)); // NOI18N
-        print.setForeground(new java.awt.Color(0, 0, 0));
-        print.setText("Print");
-        print.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printActionPerformed(evt);
-            }
-        });
-        jPanel1.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 690, 140, 50));
-
         save.setBackground(new java.awt.Color(65, 176, 59));
         save.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 24)); // NOI18N
         save.setForeground(new java.awt.Color(0, 0, 0));
@@ -759,10 +747,6 @@ public class Home extends javax.swing.JFrame {
     private void disActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_disActionPerformed
-
-    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_printActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
@@ -914,20 +898,16 @@ public class Home extends javax.swing.JFrame {
 
     private void newbillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newbillMouseClicked
         // TODO add your handling code here:
-        cname.setText("");
-        cphone.setText("");
-        pname.setText("");
-        pmanu.setText("");
-        pseriel.setText("");
-        pmodelno.setText("");
-        pprice.setText("");
-        pqty.setText("");
-        search.setText("");
-        subtotal.setText("");
-        discount.setText("");
-        total.setText("");
-        DefaultTableModel tblModel = (DefaultTableModel)table3.getModel();
-        tblModel.setRowCount(0);
+        try{
+        Databaseconfig config = new Databaseconfig();
+        Home info = new Home(config);
+        info.setVisible(true);
+        this.dispose();
+        
+        }catch(Exception ex){
+        
+        System.out.println(ex);
+        }
         
     }//GEN-LAST:event_newbillMouseClicked
     
@@ -1013,7 +993,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField pname;
     private javax.swing.JTextField pprice;
     private javax.swing.JTextField pqty;
-    private javax.swing.JButton print;
     private javax.swing.JTextField pseriel;
     private javax.swing.JButton save;
     private javax.swing.JTextField search;

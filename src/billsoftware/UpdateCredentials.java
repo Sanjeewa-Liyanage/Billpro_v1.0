@@ -50,6 +50,7 @@ public class UpdateCredentials extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -109,6 +110,14 @@ public class UpdateCredentials extends javax.swing.JFrame {
         jLabel2.setText("Enter the correct mysql database url username ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 320, 20));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-back-52.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 50));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 550));
 
         pack();
@@ -148,6 +157,21 @@ public class UpdateCredentials extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_updateMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        try{
+            Databaseconfig config = new Databaseconfig();
+            Login info = new Login(config);
+            info.setVisible(true);
+            this.dispose();
+
+        }catch(Exception  ex){
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(this, "Failed to load configuration.", "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -217,6 +241,7 @@ public class UpdateCredentials extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
