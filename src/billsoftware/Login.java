@@ -13,6 +13,8 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -193,9 +195,43 @@ public class Login extends javax.swing.JFrame {
 
     private void credentialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_credentialMouseClicked
         // TODO add your handling code here:
-       int result = JOptionPane.showConfirmDialog(null, "Contatct our Support team before Changing the Administrative Credentials", "Conformation", JOptionPane.OK_CANCEL_OPTION);
+       int result = JOptionPane.showConfirmDialog(null, "Contatct our Support team before Changing the Database Credentials", "Conformation", JOptionPane.OK_CANCEL_OPTION);
         if(result == JOptionPane.OK_OPTION){
+            JTextField popupUsername = new JTextField();
+            JPasswordField popupPassword = new JPasswordField();
+            Object[] message = {
+                
+            "Enter the username and password given by the technical team  ","Username",popupUsername,"Password", popupPassword
+            };
+            
+            int option = JOptionPane.showConfirmDialog(null, message, "Change Database", JOptionPane.OK_CANCEL_OPTION);
+            if(option == JOptionPane.OK_OPTION){
+            
+                String username = popupUsername.getText();
+                String password = popupPassword.getText().toString();
+                
+                if(username.equals("billpro")&& password.equalsIgnoreCase("billpro")){
+                   JOptionPane.showMessageDialog(null, "Login Success!!"); 
+                UpdateCredentials info = new UpdateCredentials();
+                info.setVisible(true);
+                this.dispose();
+                }else{
+                JOptionPane.showMessageDialog(null, "Something went wrong");
+                }
+                
+            }else{
+            try{
+            Databaseconfig config = new Databaseconfig();
+            Login info = new Login(config);
+            info.setVisible(true);
+            this.dispose();
         
+            }   catch(Exception  ex){
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(this, "Failed to load configuration.", "Error", JOptionPane.ERROR_MESSAGE);
+        
+            }
+            }
         }
         else{
        try{
